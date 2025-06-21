@@ -1,0 +1,271 @@
+ body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8f9fc;
+}
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  width: 230px;
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #eee;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+  color: #333;
+}
+
+.sidebar .logout {
+  color: red;
+  font-weight: bold;
+}
+
+ @media (max-width: 1024px) {
+  .topbar input {
+    width: 200px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .topbar input {
+    width: 100%;
+  }
+
+  .course-table .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .sidebar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar li {
+    margin: 10px 0;
+  }
+
+  .table-header h2 {
+    font-size: 18px;
+  }
+
+  .course-table .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+
+  .pagination {
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .edit-btn, .delete-btn {
+    font-size: 14px;
+  }
+
+  .topbar .admin-profile span {
+    font-size: 14px;
+  }
+}
+
+/*********************************************************************************/
+
+
+
+/* UploadEbook.css */
+
+.ebook-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.upload-card,
+.manage-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 1rem;
+  font-family: 'Fredoka', sans-serif;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.upload-box {
+  border: 2px dashed #2196f3;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f3f8ff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.upload-box input[type='file'] {
+  display: none;
+}
+
+.upload-box p {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #2196f3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.icon.eye {
+  color: #2196f3;
+}
+
+.icon.delete {
+  color: red;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0.5rem;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+}

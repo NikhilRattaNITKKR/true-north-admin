@@ -1,0 +1,251 @@
+ body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8f9fc;
+}
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  width: 230px;
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #eee;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+  color: #333;
+}
+
+.sidebar .logout {
+  color: red;
+  font-weight: bold;
+}
+
+ @media (max-width: 1024px) {
+  .topbar input {
+    width: 200px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .topbar input {
+    width: 100%;
+  }
+
+  .course-table .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .sidebar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar li {
+    margin: 10px 0;
+  }
+
+  .table-header h2 {
+    font-size: 18px;
+  }
+
+  .course-table .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+
+  .pagination {
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .edit-btn, .delete-btn {
+    font-size: 14px;
+  }
+
+  .topbar .admin-profile span {
+    font-size: 14px;
+  }
+}
+
+
+/*****************************************************************/
+
+
+
+/* App.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.header h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.add-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+.card-body p {
+  margin: 0.2rem 0;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.register-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: #2563eb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.actions {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.actions i:hover {
+  color: #111827;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

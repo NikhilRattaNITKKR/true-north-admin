@@ -1,0 +1,62 @@
+/********header*/
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+
+.search-box input {
+  width: 250px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bell-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.username {
+  font-weight: 500;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .search-box input {
+    width: 150px;
+  }
+
+  .username {
+    display: none;
+  }
+}

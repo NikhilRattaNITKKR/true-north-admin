@@ -1,0 +1,254 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8f9fc;
+}
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  width: 230px;
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #eee;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+  color: #333;
+}
+
+.sidebar .logout {
+  color: red;
+  font-weight: bold;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.topbar input {
+  width: 300px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.course-table {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.course-table .table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-table .add-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-input {
+  margin: 10px 0;
+  padding: 8px;
+  width: 60%;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.filters select {
+  margin-right: 10px;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.badge.gold {
+  background-color: gold;
+  color: #000;
+}
+
+.badge.silver {
+  background-color: silver;
+  color: #000;
+}
+
+.level {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.level.beginner {
+  background-color: #a1e3a1;
+  color: #0b640b;
+}
+
+.level.intermediate {
+  background-color: #c5d4f7;
+  color: #233a8c;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.pagination {
+  margin-top: 15px;
+}
+
+
+
+/* ===== Responsive CSS ===== */
+
+@media (max-width: 1024px) {
+  .topbar input {
+    width: 200px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .topbar input {
+    width: 100%;
+  }
+
+  .course-table .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .sidebar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar li {
+    margin: 10px 0;
+  }
+
+  .table-header h2 {
+    font-size: 18px;
+  }
+
+  .course-table .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+
+  .pagination {
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .edit-btn, .delete-btn {
+    font-size: 14px;
+  }
+
+  .topbar .admin-profile span {
+    font-size: 14px;
+  }
+}
