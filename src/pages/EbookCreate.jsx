@@ -146,6 +146,21 @@ export default function CreateEbook() {
                     placeholder="Enter your ebook title..."
                   />
                 </div>
+                <div className="mb-8">
+                  <label htmlFor="externalUrl" className="block text-sm font-semibold text-gray-800 mb-3">
+                    External Link
+                  </label>
+                  <input
+                    type="text"
+                    name="externalUrl"
+                    id="externalUrl"
+                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#507b00] focus:border-[#507b00] outline-none transition-all duration-200 text-gray-900 placeholder-gray-500"
+                    value={formData.externalUrl}
+                    onChange={handleChange}
+                    // required
+                    placeholder="Enter your External link..."
+                  />
+                </div>
 
                 {/* File Upload */}
                 <div className="mb-10">
@@ -191,7 +206,7 @@ export default function CreateEbook() {
                             id="file"
                             onChange={handleChange}
                             className="sr-only"
-                            required
+                            // required
                           />
                         </label>
                         <span className="text-gray-500"> or drag and drop</span>
