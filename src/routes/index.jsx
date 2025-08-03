@@ -33,6 +33,7 @@ import Sales from "../pages/Sales";
 import SliderManagement from "../pages/SliderManagement";
 import Feedback from "../pages/FeedBack";
 import { Toaster } from "react-hot-toast";
+// import QuizCategories from "../pages/QuizCategories";
 
 const AppRoutes = () => {
   return (
@@ -218,6 +219,14 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+          {/* <Route
+          path="/quiz-categories"
+          element={
+            <ProtectedRoute>
+              <QuizCategories />
+            </ProtectedRoute>
+          }
+        /> */}
         <Route
           path="/quiz"
           element={

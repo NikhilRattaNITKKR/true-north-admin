@@ -1,4 +1,4 @@
-import api from './api';
+import api from "./api";
 // Course API calls
 export const getAllCourses = async () => {
   const response = await api.get(`/courses`);
@@ -12,17 +12,17 @@ export const getCourseById = async (id) => {
 
 export const createCourse = async (courseData) => {
   const formData = new FormData();
-  Object.keys(courseData).forEach(key => {
-    if (key === 'thumbnail' && courseData[key]) {
-      formData.append('thumbnail', courseData[key]);
+  Object.keys(courseData).forEach((key) => {
+    if (key === "thumbnail" && courseData[key]) {
+      formData.append("thumbnail", courseData[key]);
     } else {
       formData.append(key, courseData[key]);
     }
   });
-  
+
   const response = await api.post(`/courses`, formData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   });
   return response.data;
@@ -30,17 +30,17 @@ export const createCourse = async (courseData) => {
 
 export const updateCourse = async (id, courseData) => {
   const formData = new FormData();
-  Object.keys(courseData).forEach(key => {
-    if (key === 'thumbnail' && courseData[key]) {
-      formData.append('thumbnail', courseData[key]);
+  Object.keys(courseData).forEach((key) => {
+    if (key === "thumbnail" && courseData[key]) {
+      formData.append("thumbnail", courseData[key]);
     } else {
       formData.append(key, courseData[key]);
     }
   });
-  
+
   const response = await api.put(`/courses/${id}`, formData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   });
   return response.data;
@@ -58,12 +58,17 @@ export const addSection = async (courseId, sectionData) => {
 };
 
 export const updateSection = async (courseId, sectionId, sectionData) => {
-  const response = await api.put(`/courses/${courseId}/sections/${sectionId}`, sectionData);
+  const response = await api.put(
+    `/courses/${courseId}/sections/${sectionId}`,
+    sectionData
+  );
   return response.data;
 };
 
 export const deleteSection = async (courseId, sectionId) => {
-  const response = await api.delete(`/courses/${courseId}/sections/${sectionId}`);
+  const response = await api.delete(
+    `/courses/${courseId}/sections/${sectionId}`
+  );
   return response.data;
 };
 
@@ -71,13 +76,18 @@ export const deleteSection = async (courseId, sectionId) => {
 export const addContent = async (courseId, contentData) => {
   const response = await api.post(`/courses/${courseId}/content`, contentData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   });
   return response.data;
 };
 
-export const updateContent = async (courseId, sectionId, contentId, contentData) => {
+export const updateContent = async (
+  courseId,
+  sectionId,
+  contentId,
+  contentData
+) => {
   const response = await api.put(
     `/courses/${courseId}/sections/${sectionId}/content/${contentId}`,
     contentData
@@ -95,6 +105,30 @@ export const deleteContent = async (courseId, sectionId, contentId) => {
 export const getContentUrl = async (courseId, sectionId, contentId) => {
   const response = await api.get(
     `/courses/${courseId}/sections/${sectionId}/content/${contentId}/url`
+  );
+  return response.data;
+};
+
+// Objective API calls
+export const addObjective = async (courseId, objectiveData) => {
+  const response = await api.post(
+    `/courses/${courseId}/objectives`,
+    objectiveData
+  );
+  return response.data;
+};
+
+export const updateObjective = async (courseId, objectiveId, objectiveData) => {
+  const response = await api.put(
+    `/courses/${courseId}/objectives/${objectiveId}`,
+    objectiveData
+  );
+  return response.data;
+};
+
+export const deleteObjective = async (courseId, objectiveId) => {
+  const response = await api.delete(
+    `/courses/${courseId}/objectives/${objectiveId}`
   );
   return response.data;
 };

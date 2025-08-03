@@ -1,38 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { updateCourse } from '../services/course';
-import { toast } from 'react-hot-toast';
+import React, { useState, useEffect } from "react";
+import { updateCourse } from "../services/course";
+import { toast } from "react-hot-toast";
 
 const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    category: '',
-    access: 'free',
-    level: 'beginner',
+    title: "",
+    description: "",
+    category: "",
+    access: "free",
+    level: "beginner",
     price: 0,
-    thumbnail: null
+    thumbnail: null,
+    status: 1,
   });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (course) {
       setFormData({
-        title: course.title || '',
-        description: course.description || '',
-        category: course.category || '',
-        access: course.access || 'free',
-        level: course.level || 'beginner',
+        title: course.title || "",
+        description: course.description || "",
+        category: course.category || "",
+        access: course.access || "free",
+        level: course.level || "beginner",
         price: course.price || 0,
-        thumbnail: null
+        thumbnail: null,
+        status: course.status,
       });
     }
   }, [course]);
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    setFormData(prev => ({
+    const { name, value, type, checked, files } = e.target;
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'file' ? files[0] : value
+      [name]:
+        type === "file" ? files[0] : type === "checkbox" ? checked : value,
     }));
   };
 
@@ -43,11 +47,11 @@ const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
     try {
       const response = await updateCourse(course._id, formData);
       if (response.success) {
-        toast.success('Course updated successfully');
+        toast.success("Course updated successfully");
         onSuccess();
       }
     } catch (error) {
-      toast.error(error.response?.data?.error || 'Failed to update course');
+      toast.error(error.response?.data?.error || "Failed to update course");
     } finally {
       setLoading(false);
     }
@@ -105,6 +109,10 @@ const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
               <select
                 name="category"
                 value={formData.category}
+                // onChange={(e) => {
+                //   e.target.value = !e.target.value;
+                //   handleChange(e);
+                // }}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -155,7 +163,7 @@ const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
               </select>
             </div>
 
-            {formData.access === 'paid' && (
+            {formData.access === "paid" && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Price ($)
@@ -172,6 +180,19 @@ const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
                 />
               </div>
             )}
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                name="status"
+                checked={formData.status}
+                onChange={handleChange}
+                value={formData.status}
+                className="h-4 w-4 border-gray-300 rounded"
+              />
+              <span className="text-gray-700">Status</span>
+            </label>
           </div>
 
           <div>
@@ -200,7 +221,7 @@ const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
               disabled={loading}
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
             >
-              {loading ? 'Updating...' : 'Update Course'}
+              {loading ? "Updating..." : "Update Course"}
             </button>
           </div>
         </form>
@@ -209,4 +230,4 @@ const EditCourseModal = ({ isOpen, onClose, onSuccess, course }) => {
   );
 };
 
-export default EditCourseModal; 
+export default EditCourseModal;
