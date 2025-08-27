@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getAllCourses, deleteCourse } from '../services/course';
-import CreateCourseModal from '../components/CreateCourseModal';
-import EditCourseModal from '../components/EditCourseModal';
-import { toast } from 'react-hot-toast';
-import Sidebar from '../components/Sidebar';
-import LoadingSpinner from '../components/LoadingSpinner';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getAllCourses, deleteCourse } from "../services/course";
+import CreateCourseModal from "../components/CreateCourseModal";
+import EditCourseModal from "../components/EditCourseModal";
+import { toast } from "react-hot-toast";
+import Sidebar from "../components/Sidebar";
+import LoadingSpinner from "../components/LoadingSpinner";
 
-
-export default function Course () {
+export default function Course() {
   return (
-    <div className='flex flex-row w-full'>
+    <div className="flex flex-row w-full">
       <Sidebar />
       <AllCourses />
     </div>
-  )
+  );
 }
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedLevel, setSelectedLevel] = useState('all');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedLevel, setSelectedLevel] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -39,7 +38,7 @@ const AllCourses = () => {
         setCourses(response.courses);
       }
     } catch (error) {
-      toast.error('Failed to fetch courses');
+      toast.error("Failed to fetch courses");
       setError(error.message);
     } finally {
       setLoading(false);
@@ -47,24 +46,27 @@ const AllCourses = () => {
   };
 
   const handleDeleteCourse = async (courseId) => {
-    if (window.confirm('Are you sure you want to delete this course?')) {
+    if (window.confirm("Are you sure you want to delete this course?")) {
       try {
         const response = await deleteCourse(courseId);
         if (response.success) {
-          toast.success('Course deleted successfully');
+          toast.success("Course deleted successfully");
           fetchCourses();
         }
       } catch (error) {
-        toast.error('Failed to delete course');
+        toast.error("Failed to delete course");
       }
     }
   };
 
-  const filteredCourses = courses.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         course.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesLevel = selectedLevel === 'all' || course.level === selectedLevel;
-    const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
+  const filteredCourses = courses.filter((course) => {
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesLevel =
+      selectedLevel === "all" || course.level === selectedLevel;
+    const matchesCategory =
+      selectedCategory === "all" || course.category === selectedCategory;
     return matchesSearch && matchesLevel && matchesCategory;
   });
 
@@ -132,7 +134,10 @@ const AllCourses = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCourses.map((course) => (
-          <div key={course._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div
+            key={course._id}
+            className="bg-white rounded-lg shadow-md overflow-hidden"
+          >
             {course.thumbnail && (
               <img
                 src={course.thumbnail}
@@ -141,14 +146,22 @@ const AllCourses = () => {
               />
             )}
             <div className="p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">{course.title}</h2>
-              <p className="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
+              <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                {course.title}
+              </h2>
+              <p className="text-gray-600 mb-4 line-clamp-2">
+                {course.description}
+              </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className={`px-3 py-1 rounded-full text-sm ${
-                  course.level === 'beginner' ? 'bg-green-100 text-green-800' :
-                  course.level === 'intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-red-100 text-red-800'
-                }`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    course.level === "beginner"
+                      ? "bg-green-100 text-green-800"
+                      : course.level === "intermediate"
+                      ? "bg-yellow-100 text-yellow-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
                   {course.level}
                 </span>
                 <span className="px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800">
@@ -160,7 +173,7 @@ const AllCourses = () => {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold text-gray-800">
-                  {course.access === 'paid' ? `$${course.price}` : 'Free'}
+                  {course.access === "paid" ? `₹${course.price}` : "Free"}
                 </span>
                 <div className="flex gap-2">
                   <Link
@@ -211,5 +224,4 @@ const AllCourses = () => {
       />
     </div>
   );
-}
-
+};

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import './New.css';
-import Sidebar from '../components/Sidebar';
+import "./New.css";
+import Sidebar from "../components/Sidebar";
 
 export default function Newcourse() {
   return (
     <div>
-      <App/>
+      <App />
     </div>
-  )
+  );
 }
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <div className="app">
       <Sidebar />
       <div className="main-content">
-        <AddCourse/>
+        <AddCourse />
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ const AddCourse = () => {
 
           <div className="form-row">
             <div>
-              <label>Price ($) *</label>
+              <label>Price (₹) *</label>
               <input type="number" placeholder="0.00" required />
             </div>
             <div>
@@ -83,7 +83,11 @@ const AddCourse = () => {
             )}
           </div>
           <div className="upload-box">
-            <input type="file" accept="image/png, image/jpeg" onChange={handleImageUpload} />
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleImageUpload}
+            />
             <p>Upload course image</p>
             <small>Recommended: 1280x720px, PNG or JPG</small>
           </div>
@@ -105,4 +109,3 @@ const AddCourse = () => {
     </div>
   );
 };
-
